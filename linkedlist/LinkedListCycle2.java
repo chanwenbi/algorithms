@@ -17,10 +17,9 @@
  *
  * 2s = s + nr; // s is the slow pointer steps, r is the cycle length;
  *              // n means the fast pointer kicked cycle
- * x + a = s = nr = (n - 1)r + L - x;  // x means head to the cycle start
- * // point, a means the cycle start point to meet point length, L means
- * // the total length (x + r)
- * so x = (n - 1)r + (L - x - a);
+ * s = x + a + kr; // x means head to cycle start steps, a means cycle start to meet point steps
+ *                 // k means slow pointer kicked cycle
+ * x = (n - k - 1)r + r - a;
  * which means head and meet point go together, they will meet at the cycle
  * start point
  */
@@ -32,7 +31,7 @@ public class Solution {
         }
 
         ListNode slow = head;
-        ListNode fast = head.next;
+        ListNode fast = head;
 
         boolean hasCycle = false;
 
@@ -50,9 +49,7 @@ public class Solution {
         }
 
         ListNode node = head;
-
-        // just remember this
-        while (node != slow.next) {
+        while (node != slow) {
             node = node.next;
             slow = slow.next;
         }

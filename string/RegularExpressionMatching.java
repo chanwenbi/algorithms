@@ -20,7 +20,7 @@
  */
 public class Solution {
 
-    // could not use solution in wildcasd.
+    // could not use wildcast solution.
     // for example: aaa, ab*a*c*a
     // if use that solution, then we need to memo all star pos when doing back compare
     // then the complexity will be the same as this solution

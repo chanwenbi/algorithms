@@ -15,35 +15,34 @@
  */
 public class Solution {
     public List<Interval> merge(List<Interval> intervals) {
-        // sort with interval.start
+        if (intervals == null || intervals.size() <= 1) {
+            return intervals;
+        }
+
+        List<Interval> result = new ArrayList<Interval>();
         Collections.sort(intervals, new Comparator<Interval>() {
+            @Override
             public int compare(Interval i1, Interval i2) {
                 return i1.start - i2.start;
             }
         });
 
-        List<Interval> ret = new ArrayList<Interval>();
+        Interval current = null;
+        for (Interval interval : intervals) {
+            if (current == null) {
+                current = interval;
+                continue;
+            }
 
-        if (intervals.isEmpty()) {
-            return ret;
-        }
-
-        int start = intervals.get(0).start;
-        int end = intervals.get(0).end;
-
-        for (int i = 1; i < intervals.size(); i++) {
-            Interval interval = intervals.get(i);
-            if (interval.start > end) {
-                ret.add(new Interval(start, end));
-                start = interval.start;
-                end = interval.end;
+            if (interval.start > current.end) {
+                result.add(current);
+                current = interval;
             } else {
-                end = Math.max(interval.end, end);
+                current.end = Math.max(current.end, interval.end);
             }
         }
 
-        ret.add(new Interval(start, end));
-
-        return ret;
+        result.add(current);
+        return result;
     }
 }

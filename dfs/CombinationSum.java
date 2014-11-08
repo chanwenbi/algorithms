@@ -14,7 +14,19 @@
  * [2, 2, 3]
  */
 public class Solution {
-    private void combinationSumHelper(List<List<Integer>> result, List<Integer> path, int[] candidates, int pos, int target) {
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        if (candidates == null || candidates.length == 0 || target <= 0) {
+            return result;
+        }
+
+        Arrays.sort(candidates);
+        combinationSumHelper(result, new ArrayList<Integer>(), 0, candidates, target);
+        return result;
+    }
+
+    private void combinationSumHelper(List<List<Integer>> result, List<Integer> path,
+            int pos, int[] candidates, int target) {
         if (target == 0) {
             result.add(new ArrayList<Integer>(path));
             return;
@@ -22,23 +34,16 @@ public class Solution {
 
         for (int i = pos; i < candidates.length; i++) {
             if (candidates[i] > target) {
-                break;
+                return;
+            }
+
+            if (i != pos && candidates[i] == candidates[i - 1]) {
+                continue;
             }
 
             path.add(candidates[i]);
-            combinationSumHelper(result, path, candidates, i, target - candidates[i]);
+            combinationSumHelper(result, path, i, candidates, target - candidates[i]);
             path.remove(path.size() - 1);
         }
-    }
-
-    public List<List<Integer>> combinationSum(int[] candidates, int target) {
-        List<List<Integer>> result = new ArrayList<List<Integer>>();
-        if (candidates == null) {
-            return result;
-        }
-        Arrays.sort(candidates);
-        combinationSumHelper(result, new ArrayList<Integer>(), candidates, 0, target);
-
-        return result;
     }
 }

@@ -29,7 +29,7 @@ public class Solution {
     }
 
     public ListNode findMiddle(ListNode head) {
-        if (head == null || head.next == null) {
+        if (head == null) {
             return head;
         }
 

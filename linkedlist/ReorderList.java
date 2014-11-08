@@ -75,7 +75,6 @@ public class Solution {
     }
 
     public void reorderList(ListNode head) {
-
         if (head == null) {
             return;
         }

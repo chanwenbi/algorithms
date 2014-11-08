@@ -43,4 +43,32 @@ public class Solution {
 
         return max;
     }
+
+    // O(nlgn)
+    public int longestIncreasingSequence(int[] A) {
+        int[] lis = new int[A.length];
+        int top = -1;
+        for (int i = 0; i < A.length; i++) {
+            if (top == -1 || lis[top] < A[i]) {
+                lis[++top] = A[i];
+            } else {
+                int index = findInsertPos(lis, 0, top, A[i]);
+                lis[index] = A[i];
+            }
+        }
+
+        return top + 1;
+    }
+
+    private int findInsertPos(int[] A, int l, int h, int value) {
+        while (l <= h) {
+            int m = l + (h - l) / 2;
+            if (value > A[m]) {
+                l = m + 1;
+            } else {
+                h = m - 1;
+            }
+        }
+        return l;
+    }
 }

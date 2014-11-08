@@ -12,22 +12,16 @@
  */
 public class Solution {
     public int searchInsert(int[] A, int target) {
-        // left close, right open
-        int l = 0, h = A.length;
+        int l = 0;
+        int h = A.length;
         while (l < h) {
-            int m = (l + h) / 2;
-            if (A[m] == target) {
-                return m;
-            } else if (A[m] < target) {
-                if (m+1 >= A.length || A[m+1] > target) {
-                    return m + 1;
-                } else {
-                    l = m + 1;
-                }
+            int m = l + (h - l) / 2;
+            if (target > A[m]) {
+                l = m + 1;
             } else {
                 h = m;
             }
         }
-        return 0;
+        return l;
     }
 }

@@ -8,28 +8,30 @@
  */
 public class Solution {
 
-    public ArrayList<String> generateParenthesis(int n) {
-        ArrayList<String> ret = new ArrayList<String>();
-        if(n <= 0) {
-            return ret;
+    // time complexity: catalan number, C(2*n, n)/(n + 1)
+    public List<String> generateParenthesis(int n) {
+        List<String> result = new ArrayList<String>();
+        if (n <= 0) {
+            return result;
         }
-        generateParenthesisHelper(ret, "", n, n);
-        return ret;
+
+        generate(result, new StringBuilder(), n, n);
+        return result;
     }
 
-    private void generateParenthesisHelper(ArrayList<String> ret, String s,
-            int left, int right) {
-        if (left > right || left < 0 || right < 0) {
+    private void generate(List<String> result, StringBuilder sb, int left, int right) {
+        if (left < 0 || right < 0 || left > right) {
             return;
         }
 
         if (left == 0 && right == 0) {
-            ret.add(s);
+            result.add(sb.toString());
             return;
         }
 
-        generateParenthesisHelper(ret, s + "(", left - 1, right);
-        generateParenthesisHelper(ret, s + ")", left, right - 1);
+        generate(result, sb.append("("), left - 1, right);
+        sb.deleteCharAt(sb.length() - 1);
+        generate(result, sb.append(")"), left, right - 1);
+        sb.deleteCharAt(sb.length() - 1);
     }
-
 }

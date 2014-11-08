@@ -11,36 +11,33 @@
  */
 public class Solution {
     public ListNode mergeKLists(List<ListNode> lists) {
-        if (lists == null || lists.size() == 0) {
+        if (lists == null) {
             return null;
         }
 
-        PriorityQueue<ListNode> queue = new PriorityQueue(lists.size() + 1,
-            new Comparator<ListNode>() {
-                @Override
-                public int compare(ListNode n1, ListNode n2) {
-                    return n1.val - n2.val;
-                }
-            });
+        PriorityQueue<ListNode> heap = new PriorityQueue<ListNode>(lists.size() + 1, new Comparator<ListNode>() {
+            @Override
+            public int compare(ListNode node1, ListNode node2) {
+                return node1.val - node2.val;
+            }
+        });
+
+        for (ListNode node : lists) {
+            if (node != null) {
+                heap.offer(node);
+            }
+        }
 
         ListNode dummy = new ListNode(0);
-
-        for (ListNode list : lists) {
-            if (list != null) {
-                queue.offer(list);
-            }
-        }
-
-        ListNode current = dummy;
-        ListNode node;
-        while ((node = queue.poll()) != null) {
-            current.next = node;
-            current = node;
+        ListNode cur = dummy;
+        while (!heap.isEmpty()) {
+            ListNode node = heap.poll();
+            cur.next = node;
+            cur = cur.next;
             if (node.next != null) {
-                queue.offer(node.next);
+                heap.offer(node.next);
             }
         }
-        current.next = null;
 
         return dummy.next;
     }
