@@ -105,11 +105,11 @@ public class Solution {
         boolean result = false;
 
         if (s2.charAt(n2 - 1) == c) {
-            result = result | isInterleave(s1, s2.substring(0, n2 - 1), s3.substring(0, n3 - 1));
+            result = result || isInterleave(s1, s2.substring(0, n2 - 1), s3.substring(0, n3 - 1));
         }
 
         if (s1.charAt(n1 - 1) == c) {
-            result = result | isInterleave(s1.substring(0, n1 - 1), s2, s3.substring(0, n3 - 1));
+            result = result || isInterleave(s1.substring(0, n1 - 1), s2, s3.substring(0, n3 - 1));
         }
 
         return result;

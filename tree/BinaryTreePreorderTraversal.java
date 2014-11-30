@@ -18,7 +18,7 @@ public class Solution {
         }
 
         Stack<TreeNode> stack = new Stack<TreeNode>();
-        stack.put(root);
+        stack.push(root);
 
         while (!stack.isEmpty()) {
             TreeNode node = stack.pop();

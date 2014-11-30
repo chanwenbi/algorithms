@@ -43,7 +43,7 @@ public class Solution {
             return 0;
         }
 
-        // way from i, j to right-bottom
+        // ways from i, j to right-bottom
         int[][] dp = new int[m][n];
 
         for (int i = 0; i < n; i++) {

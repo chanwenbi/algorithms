@@ -13,10 +13,6 @@ public class Solution {
     public List<Integer> postorderTraversal(TreeNode root) {
         List<Integer> result = new ArrayList<Integer>();
 
-        if (root == null) {
-            return result;
-        }
-
         TreeNode lastNodeVisited = null;
         TreeNode node = root;
 

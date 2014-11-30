@@ -34,16 +34,16 @@ public class Solution {
         }
     }
 
-    private void findAndDelete(TreeNode parent, TreeNode node) {
+    private void findAndDelete(TreeNode parent, TreeNode node, int val) {
         if (node == null) {
             return;
         }
         if (node.val == val) {
             myDeleteNode(parent, node);
         } else if (node.val < val) {
-            findAndDelete(node, node.right);
+            findAndDelete(node, node.right, val);
         } else {
-            findAndDelete(node, node.left);
+            findAndDelete(node, node.left, val);
         }
     }
 
@@ -51,7 +51,7 @@ public class Solution {
         // using dummy node to smooth the process
         TreeNode dummyNode = new TreeNode();
         dummyNode.left = root;
-        findAndDelete(dummyNode, root);
+        findAndDelete(dummyNode, root, val);
         return dummyNode.left;
     }
 }

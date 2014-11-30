@@ -78,37 +78,4 @@ public class Solution {
 
         return dp[0][0];
     }
-
-    /**
-     * @param A, B: Two strings.
-     * @return: The length of longest common subsequence of A and B.
-     */
-    public int longestCommonSubsequence(String A, String B) {
-        // write your code here
-
-        int n1 = A.length();
-        int n2 = B.length();
-
-        if (n1 == 0 || n2 == 0) {
-            return 0;
-        }
-
-        // longest common subsequence start from ith pos of A and jth pos of B
-        int[][] dp = new int[n1 + 1][n2 + 1];
-        dp[n1][n2] = 0;
-        dp[n1][n2 - 1] = 0;
-        dp[n1 - 1][n2] = 0;
-
-        for (int i = n1 - 1; i >= 0; i--) {
-            for (int j = n2 - 1; j >= 0; j--) {
-                if (A.charAt(i) == B.charAt(j)) {
-                    dp[i][j] = dp[i + 1][j + 1] + 1;
-                } else {
-                    dp[i][j] = Math.max(dp[i + 1][j], dp[i][j + 1]);
-                }
-            }
-        }
-
-        return dp[0][0];
-    }
 }

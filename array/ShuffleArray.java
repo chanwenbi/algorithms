@@ -13,7 +13,7 @@ public class Solution {
     public void shuffle(int[] array) {
         Random r = new Random();
         for (int i = array.length - 1; i >= 0; i--) {
-            int index = r.nextInt() % (i + 1);
+            int index = r.nextInt(i + 1);
             int temp = array[i];
             array[i] = array[index];
             array[index] = temp;

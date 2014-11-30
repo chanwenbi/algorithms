@@ -11,26 +11,23 @@
  */
 public class Solution {
 
-    static final int[] NOT_EXIST = new int[] {-1, -1};
-
     public int[] searchHelper(int[][] matrix, int i, int j, int k) {
-
-        if (i < 0 || j >= matrix[0].length) {
-            return NOT_EXIST;
+        while (i >= 0 && j < matrix[0].length) {
+            if (matrix[i][j] == k) {
+                return { i, j };
+            } else if (matrix[i][j] > k) {
+                i--;
+            } else {
+                j++
+            }
         }
 
-        if (matrix[i][j] == k) {
-            return new int[] {i, j};
-        } else if (matrix[i][j] > k) {
-            return searchHelper(matrix, i - 1, j, k);
-        } else {
-            return searchHelper(matrix, i, j + 1, k);
-        }
+        return { -1, -1 };
     }
 
     public int[] search(int[][] matrix, int k) {
-        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
-            return NOT_EXIST;
+        if (matrix == null || matrix.length == 0) {
+            return { -1, -1 };
         }
 
         return searchHelper(matrix, matrix.length - 1, 0, k);

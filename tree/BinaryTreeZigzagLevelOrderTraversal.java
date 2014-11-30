@@ -43,9 +43,8 @@ public class Solution {
             int levelCount = queue.size();
             List<Integer> levelValues = new ArrayList<Integer>();
             while (levelCount-- > 0) {
-                // pollFirst, left, right, offerLast
-                // pollLast, right, left, offerFirst
                 if (leftToRight) {
+                    // pollFirst, left, right, offerLast
                     TreeNode node = queue.pollFirst();
                     levelValues.add(node.val);
                     if (node.left != null) {
@@ -55,6 +54,7 @@ public class Solution {
                         queue.offerLast(node.right);
                     }
                 } else {
+                    // pollLast, right, left, offerFirst
                     TreeNode node = queue.pollLast();
                     levelValues.add(node.val);
                     if (node.right != null) {
