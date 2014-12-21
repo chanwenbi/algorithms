@@ -24,7 +24,7 @@ public class Solution {
             int child = i * 2 + 1;
             int max = i;
 
-            if (A[min] < A[child]) {
+            if (A[max] < A[child]) {
                 max = child;
             }
 

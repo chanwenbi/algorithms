@@ -10,7 +10,7 @@ public class Solution {
 
         Random r = new Random();
         for (int i = k; i < A.length; i++) {
-            int pos = k + r.nextInt(A.length - k);
+            int pos = r.nextInt(i + 1);
             if (pos < k) {
                 result[pos] = A[i];
             }

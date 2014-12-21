@@ -2,22 +2,21 @@ public class Solution {
 
 
     // version 1: original quicksort version
-    public void quicksort(int[] A, int i, int k) {
-        if (i < k) {
-            int p = partition(A, i, k);
-            quicksort(A, i, p - 1);
-            quicksort(A, p + 1, k);
+    public void quicksort(int[] A, int l, int h) {
+        if (l < h) {
+            int p = partition(A, l, h);
+            quicksort(A, l, p - 1);
+            quicksort(A, p + 1, h);
         }
     }
 
     private int partition(int[] A, int l, int h) {
         int pivot = pickPivot(l, h);
-        int pivotValue = A[pivot];
         swap(A, pivot, h);
 
         int pos = l;
         for (int i = l; i < h; i++) {
-            if (A[i] < pivotValue) {
+            if (A[i] < A[pivot]) {
                 swap(A, i, pos);
                 pos++;
             }
