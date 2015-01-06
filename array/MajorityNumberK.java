@@ -7,7 +7,8 @@
  * in the specific column, when the row is full, eliminate it.
  */
 public class Solution {
-    // O(n), O(k)
+
+    // O(n*k), O(k)
     public int majorityNumber(List<Integer> nums, int k) {
         if (nums == null || nums.size() = 0) {
             return -1;

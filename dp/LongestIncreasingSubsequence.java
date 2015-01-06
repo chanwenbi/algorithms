@@ -15,8 +15,9 @@ public class Solution {
     /**
      * @param nums: The integer array
      * @return: The length of LIS (longest increasing subsequence)
+     *
      */
-    // O(n^2) O(n)
+    // version 1: dynamic programming, O(n^2) O(n)
     public int longestIncreasingSubsequence(int[] nums) {
         // write your code here
         if (nums == null || nums.length == 0) {
@@ -44,9 +45,11 @@ public class Solution {
         return max;
     }
 
-    // O(nlgn)
+    // version 2: sort + LCS, O(n^2), O(n)
+
+    // version 3: maintain a sequence with smallest elem with len increasing sequence, use binary search to find the replace place, O(nlgn), O(n)
     public int longestIncreasingSequence(int[] A) {
-        int[] lis = new int[A.length];
+        int[] max = new int[A.length];
         int top = -1;
         for (int i = 0; i < A.length; i++) {
             if (top == -1 || lis[top] < A[i]) {

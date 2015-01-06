@@ -31,3 +31,31 @@ public class Solution {
         }
     }
 }
+
+
+/**
+ * Efficient program to print all prime factors of a given number
+ * Given a number n, write an efficient function to print all prime factors of n. For example, if the input number is 12, then output should be “2 2 3″. And if the input number is 315, then output should be “3 3 5 7″.
+ *
+ * http://www.geeksforgeeks.org/print-all-prime-factors-of-a-given-number/
+ */
+public List<Integer> primeFactors(int n) {
+    List<Integer> result = new ArrayList<Integer>();
+    while (n % 2 == 0) {
+        result.add(2);
+        n /= 2;
+    }
+
+    for (int i = 3; i <= (int) Math.floor(Math.sqrt(n)); i += 2) {
+        while (n % i == 0) {
+            result.add(i);
+            n /= i;
+        }
+    }
+
+    if (n > 2) {
+        result.add(n);
+    }
+
+    return result;
+}
