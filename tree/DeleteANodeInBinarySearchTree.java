@@ -1,5 +1,12 @@
 public class Solution {
 
+    /**
+     * My solutions (more clear than the code):
+     * 1. leaf node, just remove it
+     * 2. has only one child, replace the node with that child
+     * 3. has two children, find the minimum node in right subtree
+     * 4. delete it from right subtree and replace the node with this one
+     */
     private void myDeleteNode(TreeNode parent, TreeNode node) {
         if (node.left == null) {
             if (parent.right == node) {
