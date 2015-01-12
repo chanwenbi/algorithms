@@ -1,3 +1,6 @@
+/**
+ * Can use the same way to convert BST to Circular Double Linked List.
+ */
 public class Solution {
     private TreeNode prev = null;
     private TreeNode newHead = null;
