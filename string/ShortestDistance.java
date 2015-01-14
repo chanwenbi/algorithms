@@ -5,6 +5,9 @@
  *
  * could use HashMap to reduce the time complexity if this function will be used
  * multiple times.
+ *
+ * Same as:
+ * http://www.geeksforgeeks.org/find-the-minimum-distance-between-two-numbers/
  */
 public class Solution {
 

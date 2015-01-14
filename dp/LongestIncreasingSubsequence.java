@@ -49,7 +49,7 @@ public class Solution {
 
     // version 3: maintain a sequence with smallest elem with len increasing sequence, use binary search to find the replace place, O(nlgn), O(n)
     public int longestIncreasingSequence(int[] A) {
-        int[] max = new int[A.length];
+        int[] lis = new int[A.length];
         int top = -1;
         for (int i = 0; i < A.length; i++) {
             if (top == -1 || lis[top] < A[i]) {

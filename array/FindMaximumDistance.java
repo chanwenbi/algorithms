@@ -14,6 +14,8 @@
  *
  *   Input:  {6, 5, 4, 3, 2, 1}
  *   Output: -1
+ *
+ * http://www.geeksforgeeks.org/given-an-array-arr-find-the-maximum-j-i-such-that-arrj-arri/
  */
 public class Solution {
 
