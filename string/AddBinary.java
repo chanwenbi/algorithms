@@ -16,12 +16,12 @@ public class Solution {
             int abit = aLen - 1 >= 0 ? a.charAt(aLen - 1) - '0' : 0;
             int bbit = bLen - 1 >= 0 ? b.charAt(bLen - 1) - '0' : 0;
             int sum = abit + bbit + carrying;
-            sb.insert(0, sum & 0x1);
+            sb.insert(sum & 0x1);
             carrying = sum >> 1;
             aLen--;
             bLen--;
         }
-        return sb.toString();
+        return sb.reverse().toString();
     }
 
     public int addWithoutArithmetic(int n1, int n2) {

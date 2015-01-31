@@ -20,43 +20,73 @@
  */
 public class Solution {
 
-    private String replaceChar(String word, int pos, char c) {
-        char[] chars = s.toCharArray();
-        chars[index] = c;
-        return String.valueOf(chars);
-    }
-
+    // O(words*wordLen*26), O(words)
     public int ladderLength(String start, String end, Set<String> dict) {
         if (dict == null || dict.isEmpty()) {
             return 0;
         }
-        LinkedList<String> queue = new LinkedList<String>();
+
+        Queue<String> queue = new LinkedList<String>();
         queue.offer(start);
         dict.remove(start);
+
         int steps = 1;
         while (!queue.isEmpty()) {
             int size = queue.size();
             while (size-- > 0) {
                 String word = queue.poll();
-                for (int i = 0; i < word.length(); i++) {
-                    for (char c = 'a'; c <= 'z'; c++) {
-                        if (word.charAt(i) == c) {
-                            continue;
-                        }
-                        String replacedWord = replaceChar(word, i, c);
-                        if (replacedWord.equals(end)) {
-                            return steps + 1;
-                        }
-                        if (dict.contains(replacedWord)) {
-                            queue.offer(replacedWord);
-                            dict.remove(replacedWord);
-                        }
-                    }
+                if (isReachable(word, end)) {
+                    return steps + 1;
                 }
+                enqueueAdjacent(word, queue, dict);
             }
             steps++;
         }
 
         return 0;
     }
+
+    boolean isReachable(String word, String end) {
+        int len = word.length();
+        for (int i = 0; i < len; i++) {
+            for (char c = 'a'; c <= 'z'; c++) {
+                if (word.charAt(i) == c) {
+                    continue;
+                }
+
+                String newWord = replaceChar(word, i, c);
+                if (newWord.equals(end)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    void enqueueAdjacent(String word, Queue<String> queue, Set<String> dict) {
+        int len = word.length();
+        for (int i = 0; i < len; i++) {
+            for (char c = 'a'; c <= 'z'; c++) {
+                if (word.charAt(i) == c) {
+                    continue;
+                }
+
+                String newWord = replaceChar(word, i, c);
+                if (dict.contains(newWord)) {
+                    queue.offer(newWord);
+                    dict.remove(newWord);
+                }
+            }
+        }
+    }
+
+    String replaceChar(String word, int pos, char c) {
+        char[] chars = word.toCharArray();
+        chars[pos] = c;
+        return String.valueOf(chars);
+    }
+
+    // TODO: Bidirectional BFS
+
 }

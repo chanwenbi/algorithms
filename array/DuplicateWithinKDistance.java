@@ -7,13 +7,13 @@ public class Solution {
     public boolean duplicateInKDistance(int[] A, int k){
         Set<Integer> numInKDistances = new HashSet<Integer>();
 
-        for(int i = 0; i < A.length; i++){
-            if(numInKDistances.contains(A[i])){
+        for (int i = 0; i < A.length; i++) {
+            if (numInKDistances.contains(A[i])) {
                 return true;
             }
 
             // act like a circular buffer
-            if(i >= k){
+            if (i >= k) {
                 numInKDistances.remove(A[i - k]);
             }
 

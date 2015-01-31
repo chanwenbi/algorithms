@@ -85,21 +85,23 @@ public class Solution {
         }
     }
 
-    // quick select to find the kth largest or smallest pos
-    //
-    // return the pos of kth smallest value
-    // the first kth smallest values are from 0 to k
+    // quick select to find the kth element in range [l, h]
     public int quickselect(int[] A, int l, int h, int k) {
+        if (k > h - l + 1) {
+            return -1;
+        }
+
         while (l <= h) {
             int pos = partition(A, l, h);
-            if (pos == k) {
-                return pos;
+            int n = pos - l + 1;
+            if (n == k) {
+                return A[pos];
             } else if (pos > k) {
                 h = pos - 1;
             } else {
                 l = pos + 1;
+                k = k - n;
             }
         }
-        return -1;
     }
 }

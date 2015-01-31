@@ -15,10 +15,6 @@ public class Solution {
     // testcases:
     // null, {}, {1}, {1, 1, 2, 2}, {1, 1, 1, 2, 2, 3, 3, 3, 3, 5}
     public int removeDuplicates(int[] A) {
-        if (A == null) {
-            return 0;
-        }
-
         int dupAllowed = 2;
 
         if (A.length <= dupAllowed) {

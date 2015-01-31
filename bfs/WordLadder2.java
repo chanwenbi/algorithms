@@ -20,7 +20,6 @@ public class Solution {
 
     public List<List<String>> findLadders(String start, String end, Set<String> dict) {
         List<List<String>> result = new ArrayList<List<String>>();
-
         if (start == null || end == null || dict == null) {
             return result;
         }

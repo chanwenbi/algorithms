@@ -13,23 +13,6 @@
  */
 public class Solution {
 
-    private boolean isValid(char[][] board, int x, int y) {
-        Set<Character> nums = new HashSet<Character>();
-        for (int i = x; i < x + 3; i++) {
-            for (int j = y; j < y + 3; j++) {
-                if (board[i][j] == '.') {
-                    continue;
-                }
-                if (nums.contains(board[i][j])) {
-                    return false;
-                } else {
-                    nums.add(board[i][j]);
-                }
-            }
-        }
-        return true;
-    }
-
     public boolean isValidSudoku(char[][] board) {
         if (board == null || board.length != 9 || board[0].length != 9) {
             return false;
@@ -75,6 +58,23 @@ public class Solution {
             }
         }
 
+        return true;
+    }
+
+    private boolean isValid(char[][] board, int x, int y) {
+        Set<Character> nums = new HashSet<Character>();
+        for (int i = x; i < x + 3; i++) {
+            for (int j = y; j < y + 3; j++) {
+                if (board[i][j] == '.') {
+                    continue;
+                }
+                if (nums.contains(board[i][j])) {
+                    return false;
+                } else {
+                    nums.add(board[i][j]);
+                }
+            }
+        }
         return true;
     }
 }

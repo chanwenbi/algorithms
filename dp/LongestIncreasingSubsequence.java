@@ -47,7 +47,8 @@ public class Solution {
 
     // version 2: sort + LCS, O(n^2), O(n)
 
-    // version 3: maintain a sequence with smallest elem with len increasing sequence, use binary search to find the replace place, O(nlgn), O(n)
+    // version 3: maintain a sequence with smallest elem with len increasing sequence,
+    // use binary search to find the replace place, O(nlgn), O(n)
     public int longestIncreasingSequence(int[] A) {
         int[] lis = new int[A.length];
         int top = -1;

@@ -13,10 +13,10 @@
  *  (-1, -1, 2)
  */
 public class Solution {
-    public ArrayList<ArrayList<Integer>> threeSum(int[] num) {
+    public List<List<Integer>> threeSum(int[] num) {
         Arrays.sort(num);
-        List<ArrayList<Integer>> ret = new ArrayList<ArrayList<Integer>>();
-        for (int i = 0; i <= num.length -3; i++) {
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        for (int i = 0; i < num.length - 2; i++) {
             // point: skip duplicate elements
             if (i != 0 && num[i] == num[i - 1]) {
                 continue;
@@ -26,7 +26,7 @@ public class Solution {
             while (j < k) {
                 int sum = num[i] + num[j] + num[k];
                 if (sum == 0) {
-                    ret.add(new ArrayList<Integer>(Arrays.asList(num[i], num[j], num[k])));
+                    result.add(Arrays.asList(num[i], num[j], num[k]));
                     j++;
                     k--;
 
@@ -44,6 +44,6 @@ public class Solution {
                 }
             }
         }
-        return ret;
+        return result;
     }
 }

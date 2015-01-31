@@ -9,11 +9,13 @@ public class Solution {
         }
 
         Random r = new Random();
-        for (int i = k; i < A.length; i++) {
+        for (; i < A.length; i++) {
             int pos = r.nextInt(i + 1);
             if (pos < k) {
                 result[pos] = A[i];
             }
         }
+
+        return result;
     }
 }

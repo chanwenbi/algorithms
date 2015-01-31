@@ -16,12 +16,9 @@ public class Solution {
 
         Map<Integer, Integer> counts = new HashMap<Integer, Integer>();
 
-        for (int i : nums) {
-            if (counts.containsKey(i)) {
-                counts.put(i, counts.get(i) + 1);
-            } else {
-                counts.put(i, 1);
-            }
+        for (int num : nums) {
+            int count = counts.containsKey(num) ? counts.get(num) : 0;
+            counts.put(num, count + 1);
 
             if (counts.size() == k) {
                 for (int i : counts.keySet()) {
@@ -38,12 +35,14 @@ public class Solution {
         }
 
         for (int i : nums) {
-            if (counts.containsKey(i)) {
-                counts.put(i, counts.get(i) + 1);
+            if (!counts.containsKey(i)) {
+                continue;
+            }
 
-                if (counts.get(i) > (nums.size() / k)) {
-                    return i;
-                }
+            counts.put(i, counts.get(i) + 1);
+
+            if (counts.get(i) > (nums.size() / k)) {
+                return i;
             }
         }
 
